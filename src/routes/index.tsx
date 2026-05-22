@@ -14,7 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Section, Reveal, fadeUp, stagger } from "@/components/landing/Section";
 import logo from "@/assets/scale-summit-logo.png";
-import darrin from "@/assets/darrin-guttman.jpeg";
+import darrin from "@/assets/darrin_guttman.jpg";
 import gina from "@/assets/gina.webp";
 import kathy from "@/assets/kathy.jpg";
 import steve from "@/assets/steve.webp";
@@ -69,7 +69,7 @@ function Nav() {
   return (
     <header className="absolute top-0 left-0 right-0 z-30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex items-center justify-between py-6">
-        <img src={logo} alt="The Scale Summit" className="h-10 w-auto" />
+        <img src={logo} alt="The Scale Summit" className="h-10 w-auto bg-white p-1" />
         <a
           href={REGISTER_URL}
           className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-warm-white/90 hover:text-gold transition-colors"
@@ -110,12 +110,18 @@ function Hero() {
             </span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="mt-6 text-lg md:text-xl text-warm-white/75 max-w-2xl leading-relaxed">
-            Built for founders who never got formal sales training — and the ones who know they need a
-            real strategy to win cold prospects.
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 text-lg md:text-xl text-warm-white/75 max-w-2xl leading-relaxed"
+          >
+            Built for founders who never got formal sales training — and the ones who know they need
+            a real strategy to win cold prospects.
           </motion.p>
 
-          <motion.p variants={fadeUp} className="mt-4 text-xl md:text-2xl font-display italic text-warm-white">
+          <motion.p
+            variants={fadeUp}
+            className="mt-4 text-xl md:text-2xl font-display italic text-warm-white"
+          >
             Stop winging your sales calls. Start closing them.
           </motion.p>
 
@@ -147,9 +153,12 @@ function WhySection() {
     <Section className="bg-background">
       <div className="grid lg:grid-cols-12 gap-12">
         <Reveal className="lg:col-span-5">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Why This Course Matters</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            Why This Course Matters
+          </p>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight">
-            You're the expert. <span className="italic text-warm-gray">But closing pays the bills.</span>
+            You're the expert.{" "}
+            <span className="italic text-warm-gray">But closing pays the bills.</span>
           </h2>
           <p className="mt-6 text-lg text-warm-gray leading-relaxed">
             For a lot of founders, that's a terrifying thought. It doesn't have to be. Close With
@@ -159,7 +168,9 @@ function WhySection() {
           <p className="mt-6 text-lg font-semibold text-navy">
             Master these, and selling stops feeling like guesswork. It starts feeling like a system.
           </p>
-          <div className="mt-8"><PrimaryCTA /></div>
+          <div className="mt-8">
+            <PrimaryCTA />
+          </div>
         </Reveal>
 
         <motion.div
@@ -200,9 +211,12 @@ function WhatYouLearn() {
       <div className="absolute top-1/2 -right-32 h-[400px] w-[400px] rounded-full bg-gold/10 blur-[100px] -translate-y-1/2" />
       <div className="relative grid lg:grid-cols-2 gap-16 items-center">
         <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">What You'll Learn</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            What You'll Learn
+          </p>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
-            Closing cold leads is where most founders <span className="italic text-gold">fall apart.</span>
+            Closing cold leads is where most founders{" "}
+            <span className="italic text-gold">fall apart.</span>
           </h2>
           <p className="mt-6 text-lg text-warm-white/75 leading-relaxed">
             This 4-session course walks you through building a personalized selling system designed
@@ -241,7 +255,9 @@ function WhatYouLearn() {
       <Reveal className="mt-16 flex flex-wrap items-center justify-between gap-6 rounded-2xl border border-gold/30 bg-gradient-to-r from-gold/10 to-transparent p-8">
         <div>
           <h3 className="text-2xl font-bold">Ready to take the next step?</h3>
-          <p className="mt-1 text-warm-white/70">Have questions? <AdvisorCTA /></p>
+          <p className="mt-1 text-warm-white/70">
+            Have questions? <AdvisorCTA />
+          </p>
         </div>
         <PrimaryCTA />
       </Reveal>
@@ -276,9 +292,12 @@ function Schedule() {
   return (
     <Section className="bg-background" id="schedule">
       <Reveal className="max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Course Schedule & Outline</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+          Course Schedule & Outline
+        </p>
         <h2 className="mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight">
-          Four working sessions. <span className="italic text-warm-gray">You build as you learn.</span>
+          Four working sessions.{" "}
+          <span className="italic text-warm-gray">You build as you learn.</span>
         </h2>
         <p className="mt-6 text-lg text-warm-gray leading-relaxed">
           Led by a professional sales trainer, you'll work through the Close With Confidence
@@ -347,7 +366,9 @@ function Instructor() {
         </Reveal>
 
         <Reveal className="lg:col-span-7" delay={0.1}>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Your Instructor</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            Your Instructor
+          </p>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight">
             Darrin Guttman
           </h2>
@@ -439,10 +460,17 @@ function Testimonials() {
             </blockquote>
             <figcaption className="mt-6 flex items-center gap-4">
               {t.img ? (
-                <img src={t.img} alt={t.name} className="h-14 w-14 rounded-full object-cover border-2 border-gold" />
+                <img
+                  src={t.img}
+                  alt={t.name}
+                  className="h-14 w-14 rounded-full object-cover border-2 border-gold"
+                />
               ) : (
                 <div className="h-14 w-14 rounded-full bg-navy text-warm-white flex items-center justify-center font-display text-lg font-bold border-2 border-gold">
-                  {t.name.split(" ").map((n) => n[0]).join("")}
+                  {t.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
                 </div>
               )}
               <div>
@@ -509,7 +537,10 @@ function FaqSection() {
 
 function FinalCTA() {
   return (
-    <Section className="bg-navy-deep text-warm-white text-center relative overflow-hidden" id="register">
+    <Section
+      className="bg-navy-deep text-warm-white text-center relative overflow-hidden"
+      id="register"
+    >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(0.78_0.13_78_/_0.15),transparent_60%)]" />
       <Reveal className="relative max-w-3xl mx-auto">
         <h2 className="text-4xl md:text-6xl font-bold leading-tight">
@@ -534,10 +565,12 @@ function FinalCTA() {
 
 function Footer() {
   return (
-    <footer id="contact" className="bg-navy-deep border-t border-warm-white/10 text-warm-white/70">
+    <footer id="contact" className="bg-background border-t border-border text-muted-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <img src={logo} alt="The Scale Summit" className="h-8 w-auto" />
-        <p className="text-sm">© {new Date().getFullYear()} The Scale Summit. All rights reserved.</p>
+        <img src={logo} alt="The Scale Summit" className="h-8 w-auto bg-white p-1" />
+        <p className="text-sm">
+          © {new Date().getFullYear()} The Scale Summit. All rights reserved.
+        </p>
       </div>
     </footer>
   );

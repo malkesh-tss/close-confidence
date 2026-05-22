@@ -18,7 +18,8 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         gold: "bg-gold text-navy-deep shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all font-semibold",
         navy: "bg-navy text-warm-white hover:bg-navy-deep shadow-md transition-all font-semibold",
-        ghostGold: "border border-gold/60 text-gold hover:bg-gold hover:text-navy-deep transition-colors",
+        ghostGold:
+          "border border-gold/60 text-gold hover:bg-gold hover:text-navy-deep transition-colors",
       },
       size: {
         default: "h-9 px-4 py-2",
