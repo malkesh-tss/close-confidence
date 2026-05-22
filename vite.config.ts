@@ -4,10 +4,12 @@ import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { cloudflare } from "@cloudflare/vite-plugin";
+import { nitro } from "nitro/vite";
 
 export default defineConfig({
   plugins: [
     tanstackStart(),
+    nitro({ preset: "vercel" }),
     viteReact(),
     tailwindcss(),
     tsconfigPaths(),
