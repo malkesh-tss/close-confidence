@@ -10,7 +10,10 @@ import {
   Users,
   Zap,
   Quote,
+  Clock,
+  Timer,
 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Section, Reveal, fadeUp, stagger } from "@/components/landing/Section";
 import logo from "@/assets/scale-summit-logo.png";
@@ -18,7 +21,7 @@ import darrin from "@/assets/darrin_guttman.jpg";
 import gina from "@/assets/gina.webp";
 import kathy from "@/assets/kathy.jpg";
 import steve from "@/assets/steve.webp";
-
+import Brendon from "@/assets/Brendon.jpg";
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
@@ -67,15 +70,17 @@ function AdvisorCTA() {
 
 function Nav() {
   return (
-    <header className="absolute top-0 left-0 right-0 z-30">
+    <header className="absolute top-0 left-0 right-0 z-30 bg-white text-navy shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex items-center justify-between py-6">
-        <img src={logo} alt="The Scale Summit" className="h-10 w-auto bg-white p-1" />
-        <a
-          href={REGISTER_URL}
-          className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-warm-white/90 hover:text-gold transition-colors"
-        >
-          Register <ArrowRight className="h-4 w-4" />
-        </a>
+        <img src={logo} alt="The Scale Summit" className="h-18 w-auto bg-white p-1" />
+       <div className="hidden sm:block">
+          <Button asChild variant="gold" size="lg" className="group">
+            <a href={REGISTER_URL}>
+              Register
+              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </Button>
+        </div>
       </div>
     </header>
   );
@@ -101,12 +106,11 @@ function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="mt-6 text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight"
+            className="mt-6 text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight whitespace-nowrap"
           >
             Close With{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 italic text-gold">Confidence</span>
-              <span className="absolute inset-x-0 bottom-2 h-3 bg-gold/20 -skew-x-6" />
+              <span className="relative z-10 italic text-gold font-bold">Confidence</span>
             </span>
           </motion.h1>
 
@@ -114,7 +118,7 @@ function Hero() {
             variants={fadeUp}
             className="mt-6 text-lg md:text-xl text-warm-white/75 max-w-2xl leading-relaxed"
           >
-            Built for founders who never got formal sales training — and the ones who know they need
+            Built for founders who never got formal sales training, and the ones who know they need
             a real strategy to win cold prospects.
           </motion.p>
 
@@ -157,8 +161,8 @@ function WhySection() {
             Why This Course Matters
           </p>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight">
-            You're the expert.{" "}
-            <span className="italic text-warm-gray">But closing pays the bills.</span>
+            You're the expert in your field. But here's the hard truth: if you can't close, none of
+            that expertise pays the bills.
           </h2>
           <p className="mt-6 text-lg text-warm-gray leading-relaxed">
             For a lot of founders, that's a terrifying thought. It doesn't have to be. Close With
@@ -237,6 +241,12 @@ function WhatYouLearn() {
           variants={stagger}
           className="space-y-4"
         >
+          <div>
+            {/* FIX 1: Added missing transition sentence */}
+            <h1 className="mt-6 text-lg text-warm-white/75 leading-relaxed">
+              You'll walk away with a personalized step-by-step sales process and the ability to:
+            </h1>
+          </div>
           {LEARN_ITEMS.map((item) => (
             <motion.li
               key={item}
@@ -256,7 +266,10 @@ function WhatYouLearn() {
         <div>
           <h3 className="text-2xl font-bold">Ready to take the next step?</h3>
           <p className="mt-1 text-warm-white/70">
-            Have questions? <AdvisorCTA />
+            Have questions? {/* FIX 2: Wrap AdvisorCTA to override link color to gold */}
+            <span className="[&_a]:text-gold [&_a]:underline [&_a]:decoration-gold/50 [&_a]:hover:decoration-gold">
+              <AdvisorCTA />
+            </span>
           </p>
         </div>
         <PrimaryCTA />
@@ -267,22 +280,22 @@ function WhatYouLearn() {
 
 const SESSIONS = [
   {
-    n: "01",
+    n: 1,
     title: "Build Your Personal Discovery Call",
     date: "June 16, 2026",
   },
   {
-    n: "02",
+    n: 2,
     title: "How to Proactively Overcome Objections",
     date: "June 23, 2026",
   },
   {
-    n: "03",
-    title: "The Art of Storytelling, Presenting Your Proposal, and Closing the Sale",
+    n: 3,
+    title: "The Art of: Storytelling, Presenting Your Proposal, and Closing the Sale",
     date: "June 30, 2026",
   },
   {
-    n: "04",
+    n: 4,
     title: "Build the Steps of Your Personalized Sales Process",
     date: "July 7, 2026",
   },
@@ -291,59 +304,78 @@ const SESSIONS = [
 function Schedule() {
   return (
     <Section className="bg-background" id="schedule">
+      {/* Header */}
       <Reveal className="max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
           Course Schedule & Outline
         </p>
-        <h2 className="mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight">
-          Four working sessions.{" "}
-          <span className="italic text-warm-gray">You build as you learn.</span>
+        <h2 className="mt-5 font-display text-[clamp(26px,4vw,38px)] font-bold text-navy leading-[1.2] max-w-[560px]">
+          Every one of the four sessions is a working session.{" "}
+          <span className="italic font-normal text-warm-gray">You build as you learn.</span>
         </h2>
-        <p className="mt-6 text-lg text-warm-gray leading-relaxed">
+        <p className="mt-4 text-[15px] text-warm-gray leading-[1.75] max-w-[600px]">
           Led by a professional sales trainer, you'll work through the Close With Confidence
-          Playbook to construct your personalized selling system step by step — with real-time
-          feedback from a room of fellow business owners.
+          Playbook to construct your personalized selling system step by step. Our trainer keeps the
+          group engaged so you get expert guidance plus real-time feedback from a room of fellow
+          business owners solving the same challenges.
         </p>
+        <span className="mt-6 inline-block text-[10px] font-semibold uppercase tracking-[0.18em] text-gold border border-gold rounded-full px-4 py-1">
+          4 Working Sessions
+        </span>
       </Reveal>
 
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
-        variants={stagger}
-        className="mt-14 grid gap-5"
-      >
-        {SESSIONS.map((s) => (
-          <motion.div
-            key={s.n}
-            variants={fadeUp}
-            className="group grid md:grid-cols-12 gap-6 items-center rounded-2xl border border-border bg-card p-6 md:p-8 hover:border-gold hover:shadow-xl transition-all"
-          >
-            <div className="md:col-span-2 flex items-center gap-4">
-              <span className="font-display text-5xl text-gold/40 group-hover:text-gold transition-colors">
-                {s.n}
-              </span>
-              <div className="h-px flex-1 bg-border md:hidden" />
-            </div>
-            <div className="md:col-span-7">
-              <p className="text-xs font-semibold uppercase tracking-widest text-warm-gray">
-                Session {s.n}
-              </p>
-              <h3 className="mt-1 text-xl md:text-2xl font-bold text-navy leading-snug">
-                {s.title}
-              </h3>
-            </div>
-            <div className="md:col-span-3 flex items-start gap-3 text-sm">
-              <Calendar className="h-5 w-5 text-gold mt-0.5 shrink-0" />
-              <div>
-                <p className="font-semibold text-navy">{s.date}</p>
-                <p className="text-warm-gray">12 PM PDT / 3 PM EDT</p>
-                <p className="text-warm-gray">90 minutes</p>
+      {/* Timeline list */}
+      <div className="mt-10 relative">
+        {/* Vertical rule */}
+        <div className="absolute left-7 top-0 bottom-0 w-px bg-border" />
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={stagger}
+          className="grid"
+        >
+          {SESSIONS.map((s) => (
+            <motion.div
+              key={s.n}
+              variants={fadeUp}
+              className="group grid grid-cols-[56px_1fr] gap-x-5 py-6 border-b border-border last:border-b-0"
+            >
+              {/* Number circle */}
+              <div className="flex flex-col items-center pt-0.5 z-10">
+                <div className="w-9 h-9 rounded-full border border-border bg-background flex items-center justify-center text-[13px] font-semibold text-warm-gray transition-all group-hover:bg-gold group-hover:border-gold group-hover:text-white">
+                  {s.n}
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+
+              {/* Content */}
+              <div className="pt-1">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-warm-gray/60">
+                  Session {s.n}
+                </p>
+                <h3 className="mt-1 font-display text-[clamp(16px,2.5vw,20px)] font-bold leading-snug text-navy transition-colors group-hover:text-gold">
+                  {s.title}
+                </h3>
+                <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1">
+                  <span className="flex items-center gap-1.5 text-[12px] text-warm-gray">
+                    <Calendar className="h-3.5 w-3.5 text-gold/80 shrink-0" />
+                    <span className="font-semibold text-navy">{s.date}</span>
+                  </span>
+                  <span className="flex items-center gap-1.5 text-[12px] text-warm-gray">
+                    <Clock className="h-3.5 w-3.5 text-gold/80 shrink-0" />
+                    12 PM PDT / 3 PM EDT
+                  </span>
+                  <span className="flex items-center gap-1.5 text-[12px] text-warm-gray">
+                    <Timer className="h-3.5 w-3.5 text-gold/80 shrink-0" />
+                    90 minutes
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </Section>
   );
 }
@@ -378,7 +410,7 @@ function Instructor() {
           <div className="mt-6 space-y-4 text-lg text-foreground/80 leading-relaxed">
             <p>
               Darrin started selling in college and never stopped. Over 40 years in sales, the
-              communication and closing strategies he developed didn't just build his own success —
+              communication and closing strategies he developed didn't just build his own success
               they've shaped the careers of thousands he's trained and mentored.
             </p>
             <p>
@@ -389,6 +421,7 @@ function Instructor() {
               This course is his baby. For most business owners, it's the missing piece that finally
               unlocks the ability to close with confidence.
             </p>
+            <p>Ready to take the next step in business ownership success?</p>
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-6">
             <PrimaryCTA />
@@ -411,7 +444,7 @@ const TESTIMONIALS = [
   {
     name: "Brendon Reimer",
     role: "Riivers Advisory Group, Founder",
-    img: null,
+    img: Brendon,
     quote:
       "This wasn't just a sales program, it was a full business strategy accelerator. The process is rock solid, no fluff, and gave me the confidence and direction to scale faster than I thought possible.",
   },
@@ -420,14 +453,14 @@ const TESTIMONIALS = [
     role: "P3 Transformation, Founder & CEO",
     img: gina,
     quote:
-      "The program's structure and insights were immediately actionable — resulting in our largest client win to date, closed in just one week.",
+      "The program's structure and insights were immediately actionable  resulting in our largest client win to date, closed in just one week.",
   },
   {
     name: "Steve Soto",
     role: "Breezy Sites, Founder",
     img: steve,
     quote:
-      "This program has completely shifted how I approach sales — focusing on truly understanding the customer's issues so we work together collaboratively. And I closed several new sales already.",
+      "This program has completely shifted how I approach sales  focusing on truly understanding the customer's issues so we work together collaboratively. And I closed several new sales already.",
   },
 ];
 
@@ -437,7 +470,7 @@ function Testimonials() {
       <Reveal className="max-w-3xl">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Real Results</p>
         <h2 className="mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight">
-          What people are saying.
+          What People Are Saying About The Scale Summit Courses & Events.
         </h2>
       </Reveal>
 
@@ -488,7 +521,7 @@ function Testimonials() {
 const FAQ = [
   {
     q: "Do I need any sales experience?",
-    a: "None at all. This course was built specifically for founders with no formal sales training.",
+    a: "None at all. This course was built specifically for founders with no formal sales training, limited experience, or those who need a refresher.",
   },
   {
     q: "What if I already sell, but inconsistently?",
@@ -496,7 +529,7 @@ const FAQ = [
   },
   {
     q: "Will this work for my industry?",
-    a: "Yes. If you do a face-to-face sale, you're building your personalized sales process — tailored to what you sell and who you sell to.",
+    a: "Yes. If you do a face-to-face sale, you're building your personalized sales process  tailored to what you sell and who you sell to.",
   },
   {
     q: "What do I walk away with?",
@@ -544,10 +577,10 @@ function FinalCTA() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(0.78_0.13_78_/_0.15),transparent_60%)]" />
       <Reveal className="relative max-w-3xl mx-auto">
         <h2 className="text-4xl md:text-6xl font-bold leading-tight">
-          Your expertise got you this far.
+          You're building something special.
         </h2>
         <p className="mt-4 font-display italic text-2xl md:text-3xl text-gold">
-          Your ability to close is what takes you the rest of the way.
+          This is where you learn to sell it like a pro.
         </p>
         <div className="mt-10 flex flex-wrap justify-center items-center gap-6">
           <PrimaryCTA />
@@ -567,7 +600,7 @@ function Footer() {
   return (
     <footer id="contact" className="bg-background border-t border-border text-muted-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <img src={logo} alt="The Scale Summit" className="h-8 w-auto bg-white p-1" />
+        <img src={logo} alt="The Scale Summit" className="h-18 w-auto bg-white p-1" />
         <p className="text-sm">
           © {new Date().getFullYear()} The Scale Summit. All rights reserved.
         </p>
