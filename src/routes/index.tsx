@@ -73,7 +73,7 @@ function Nav() {
     <header className="absolute top-0 left-0 right-0 z-30 bg-white text-navy shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex items-center justify-between py-6">
         <img src={logo} alt="The Scale Summit" className="h-18 w-auto bg-white p-1" />
-       <div className="hidden sm:block">
+        <div className="hidden sm:block">
           <Button asChild variant="gold" size="lg" className="group">
             <a href={REGISTER_URL}>
               Register
