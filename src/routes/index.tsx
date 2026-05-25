@@ -43,15 +43,15 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const REGISTER_URL = "#register";
-const ADVISOR_URL = "#contact";
+const REGISTER_URL = "https://buy.stripe.com/aFacN68GJgdUckt4iv2880i";
+const ADVISOR_URL = "https://meet-with-ed.thescalesummit.com/";
 
 function PrimaryCTA({ label = "Register Now" }: { label?: string }) {
   return (
     <Button asChild variant="gold" size="xl" className="group">
       <a href={REGISTER_URL}>
         {label}
-        <ArrowRight className="ml-1 transition-transform group-hover:translate-x-1" />
+        <ArrowRight className="ml-1 transition  -transform group-hover:translate-x-1" />
       </a>
     </Button>
   );
@@ -107,7 +107,7 @@ function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="mt-6 text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight whitespace-nowrap"
+            className="mt-6 text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight sm:whitespace-nowrap"
           >
             Close With{" "}
             <span className="relative inline-block">
@@ -172,11 +172,10 @@ function WhySection() {
             <em className="italic text-gold">none of that expertise pays the bills.</em>
           </h2>
           <p className="mt-5 text-sm leading-[1.8] text-warm-gray">
-            For a lot of founders, that's a terrifying thought. It doesn't have to be. Close With
-            Confidence gives you the clarity and the strategy to finally answer the questions that
-            keep founders stuck.
+            For a lot of founders, that's a terrifying thought. It doesn't have to be.
           </p>
-          <p className="mt-3.5 text-sm font-semibold text-navy leading-[1.7]">
+
+          <p className="mt-5 text-sm leading-[1.8] text-warm-gray">
             Master these, and selling stops feeling like guesswork. It starts feeling like a system.
           </p>
           <div className="mt-8">
@@ -185,35 +184,42 @@ function WhySection() {
         </Reveal>
 
         {/* RIGHT — indexed list with left gutter */}
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={stagger}
-        >
-          {WHY_QUESTIONS.map(({ icon: Icon, q }, i) => (
-            <motion.div
-              key={q}
-              variants={fadeUp}
-              className="grid grid-cols-[48px_1fr] border-t border-navy/10 last:border-b"
-            >
-              {/* gutter: number + icon */}
-              <div className="flex flex-col items-center gap-1.5 py-5 border-r border-navy/10">
-                <span className="font-['Lora',serif] text-[0.8rem] font-bold text-gold tracking-wide">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-navy">
-                  <Icon className="h-4 w-4 text-gold" />
-                </div>
-              </div>
+        <div>
+          <p className="mt-3.5 text-sm font-semibold text-navy leading-[1.7]">
+            Close With Confidence gives you the clarity and the strategy to finally answer the
+            questions that keep founders stuck.
+          </p>
 
-              {/* question text */}
-              <div className="flex items-center pl-4 py-5">
-                <p className="text-sm font-medium text-navy leading-snug">{q}</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={stagger}
+          >
+            {WHY_QUESTIONS.map(({ icon: Icon, q }, i) => (
+              <motion.div
+                key={q}
+                variants={fadeUp}
+                className="grid grid-cols-[48px_1fr] border-t border-navy/10 last:border-b"
+              >
+                {/* gutter: number + icon */}
+                <div className="flex flex-col items-center gap-1.5 py-5 border-r border-navy/10">
+                  <span className="font-['Lora',serif] text-[0.8rem] font-bold text-gold tracking-wide">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-navy">
+                    <Icon className="h-4 w-4 text-gold" />
+                  </div>
+                </div>
+
+                {/* question text */}
+                <div className="flex items-center pl-4 py-5">
+                  <p className="text-sm font-medium text-navy leading-snug">{q}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </Section>
   );

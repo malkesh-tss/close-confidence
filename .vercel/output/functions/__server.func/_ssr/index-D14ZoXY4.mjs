@@ -4,7 +4,7 @@ import { c as cva } from "../_libs/class-variance-authority.mjs";
 import { c as clsx } from "../_libs/clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
 import { m as motion } from "../_libs/framer-motion.mjs";
-import { S as Sparkles, M as MessageCircle, T as Target, U as Users, Z as Zap, a as Check, C as Calendar, Q as Quote, A as ArrowRight } from "../_libs/lucide-react.mjs";
+import { S as Sparkles, M as MessageCircle, T as Target, U as Users, Z as Zap, a as Check, C as Calendar, b as Clock, c as Timer, Q as Quote, A as ArrowRight } from "../_libs/lucide-react.mjs";
 import "../_libs/radix-ui__react-compose-refs.mjs";
 import "../_libs/motion-dom.mjs";
 import "../_libs/motion-utils.mjs";
@@ -85,6 +85,7 @@ const darrin = "/assets/darrin_guttman-C6m-KaoB.jpg";
 const gina = "/assets/gina-DJLqAza0.webp";
 const kathy = "/assets/kathy-BElUK10z.jpg";
 const steve = "/assets/steve-E3sQruby.webp";
+const Brendon = "/assets/Brendon-CyRRWGln.jpg";
 const REGISTER_URL = "#register";
 const ADVISOR_URL = "#contact";
 function PrimaryCTA({
@@ -102,12 +103,12 @@ function AdvisorCTA() {
   ] });
 }
 function Nav() {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: "absolute top-0 left-0 right-0 z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex items-center justify-between py-6", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: logo, alt: "The Scale Summit", className: "h-10 w-auto bg-white p-1" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: REGISTER_URL, className: "hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-warm-white/90 hover:text-gold transition-colors", children: [
-      "Register ",
-      /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { className: "h-4 w-4" })
-    ] })
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: "absolute top-0 left-0 right-0 z-30 bg-white text-navy shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex items-center justify-between py-6", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: logo, alt: "The Scale Summit", className: "h-18 w-auto bg-white p-1" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "hidden sm:block", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { asChild: true, variant: "gold", size: "lg", className: "group", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: REGISTER_URL, children: [
+      "Register",
+      /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { className: "ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" })
+    ] }) }) })
   ] }) });
 }
 function Hero() {
@@ -121,15 +122,12 @@ function Hero() {
         /* @__PURE__ */ jsxRuntimeExports.jsx(Sparkles, { className: "h-3.5 w-3.5" }),
         " Sales Training for Founders"
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.h1, { variants: fadeUp, className: "mt-6 text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.h1, { variants: fadeUp, className: "mt-6 text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight whitespace-nowrap", children: [
         "Close With",
         " ",
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "relative inline-block", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "relative z-10 italic text-gold", children: "Confidence" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "absolute inset-x-0 bottom-2 h-3 bg-gold/20 -skew-x-6" })
-        ] })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "relative inline-block", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "relative z-10 italic text-gold font-bold", children: "Confidence" }) })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(motion.p, { variants: fadeUp, className: "mt-6 text-lg md:text-xl text-warm-white/75 max-w-2xl leading-relaxed", children: "Built for founders who never got formal sales training — and the ones who know they need a real strategy to win cold prospects." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(motion.p, { variants: fadeUp, className: "mt-6 text-lg md:text-xl text-warm-white/75 max-w-2xl leading-relaxed", children: "Built for founders who never got formal sales training, and the ones who know they need a real strategy to win cold prospects." }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(motion.p, { variants: fadeUp, className: "mt-4 text-xl md:text-2xl font-display italic text-warm-white", children: "Stop winging your sales calls. Start closing them." }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { variants: fadeUp, className: "mt-10 flex flex-wrap items-center gap-6", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(PrimaryCTA, {}),
@@ -155,29 +153,37 @@ const WHY_QUESTIONS = [{
   q: "Why do I get ghosted when I swore the deal was done?"
 }];
 function WhySection() {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Section, { className: "bg-background", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid lg:grid-cols-12 gap-12", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(Reveal, { className: "lg:col-span-5", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold uppercase tracking-[0.2em] text-gold", children: "Why This Course Matters" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight", children: [
-        "You're the expert.",
-        " ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "italic text-warm-gray", children: "But closing pays the bills." })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-6 text-lg text-warm-gray leading-relaxed", children: "For a lot of founders, that's a terrifying thought. It doesn't have to be. Close With Confidence gives you the clarity and the strategy to finally answer the questions that keep founders stuck." }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-6 text-lg font-semibold text-navy", children: "Master these, and selling stops feeling like guesswork. It starts feeling like a system." }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-8", children: /* @__PURE__ */ jsxRuntimeExports.jsx(PrimaryCTA, {}) })
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(Section, { className: "bg-background py-14 px-8", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-10", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] font-semibold uppercase tracking-[0.22em] text-gold shrink-0", children: "Why This Course Matters" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 h-px bg-gold opacity-35" })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(motion.div, { initial: "hidden", whileInView: "show", viewport: {
-      once: true,
-      margin: "-80px"
-    }, variants: stagger, className: "lg:col-span-7 grid sm:grid-cols-2 gap-4", children: WHY_QUESTIONS.map(({
-      icon: Icon,
-      q
-    }) => /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { variants: fadeUp, className: "group rounded-2xl border border-border bg-card p-6 hover:border-gold hover:shadow-lg transition-all", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-gold group-hover:bg-gold group-hover:text-navy transition-colors", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "h-5 w-5" }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-5 text-lg font-semibold text-navy leading-snug", children: q })
-    ] }, q)) })
-  ] }) });
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid lg:grid-cols-2 gap-16 items-start", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(Reveal, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "font-['Lora',serif] text-4xl md:text-[2.4rem] font-bold leading-[1.2] text-navy", children: [
+          "You're the expert in your field. But here's the hard truth: if you can't close,",
+          " ",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("em", { className: "italic text-gold", children: "none of that expertise pays the bills." })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-5 text-sm leading-[1.8] text-warm-gray", children: "For a lot of founders, that's a terrifying thought. It doesn't have to be. Close With Confidence gives you the clarity and the strategy to finally answer the questions that keep founders stuck." }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-3.5 text-sm font-semibold text-navy leading-[1.7]", children: "Master these, and selling stops feeling like guesswork. It starts feeling like a system." }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-8", children: /* @__PURE__ */ jsxRuntimeExports.jsx(PrimaryCTA, {}) })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(motion.div, { initial: "hidden", whileInView: "show", viewport: {
+        once: true,
+        margin: "-80px"
+      }, variants: stagger, children: WHY_QUESTIONS.map(({
+        icon: Icon,
+        q
+      }, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { variants: fadeUp, className: "grid grid-cols-[48px_1fr] border-t border-navy/10 last:border-b", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center gap-1.5 py-5 border-r border-navy/10", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-['Lora',serif] text-[0.8rem] font-bold text-gold tracking-wide", children: String(i + 1).padStart(2, "0") }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-8 w-8 items-center justify-center rounded-md bg-navy", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "h-4 w-4 text-gold" }) })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center pl-4 py-5", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-medium text-navy leading-snug", children: q }) })
+      ] }, q)) })
+    ] })
+  ] });
 }
 const LEARN_ITEMS = ["Create instant trust and credibility with cold prospects", "Set up the close right inside your Discovery Call", "Handle objections like a pro", "Present your proposal and close without the awkwardness"];
 function WhatYouLearn() {
@@ -198,20 +204,23 @@ function WhatYouLearn() {
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "No more wondering how to grow your business." })
         ] })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(motion.ul, { initial: "hidden", whileInView: "show", viewport: {
-        once: true,
-        margin: "-80px"
-      }, variants: stagger, className: "space-y-4", children: LEARN_ITEMS.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.li, { variants: fadeUp, className: "flex items-start gap-4 rounded-2xl border border-warm-white/10 bg-warm-white/5 backdrop-blur p-5", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold text-navy-deep", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "h-5 w-5", strokeWidth: 3 }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg leading-snug pt-1", children: item })
-      ] }, item)) })
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mb-6 text-lg text-warm-white/75 leading-relaxed", children: "You'll walk away with a personalized step-by-step sales process and the ability to:" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(motion.ul, { initial: "hidden", whileInView: "show", viewport: {
+          once: true,
+          margin: "-80px"
+        }, variants: stagger, className: "space-y-4", children: LEARN_ITEMS.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.li, { variants: fadeUp, className: "flex items-start gap-4 rounded-2xl border border-warm-white/10 bg-warm-white/5 backdrop-blur p-5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold text-navy-deep", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "h-5 w-5", strokeWidth: 3 }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg leading-snug pt-1", children: item })
+        ] }, item)) })
+      ] })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(Reveal, { className: "mt-16 flex flex-wrap items-center justify-between gap-6 rounded-2xl border border-gold/30 bg-gradient-to-r from-gold/10 to-transparent p-8", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-2xl font-bold", children: "Ready to take the next step?" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "mt-1 text-warm-white/70", children: [
           "Have questions? ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx(AdvisorCTA, {})
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "[&_a]:text-gold [&_a]:underline [&_a]:decoration-gold/50 [&_a]:hover:decoration-gold", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AdvisorCTA, {}) })
         ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(PrimaryCTA, {})
@@ -219,57 +228,64 @@ function WhatYouLearn() {
   ] });
 }
 const SESSIONS = [{
-  n: "01",
+  n: 1,
   title: "Build Your Personal Discovery Call",
   date: "June 16, 2026"
 }, {
-  n: "02",
+  n: 2,
   title: "How to Proactively Overcome Objections",
   date: "June 23, 2026"
 }, {
-  n: "03",
-  title: "The Art of Storytelling, Presenting Your Proposal, and Closing the Sale",
+  n: 3,
+  title: "The Art of: Storytelling, Presenting Your Proposal, and Closing the Sale",
   date: "June 30, 2026"
 }, {
-  n: "04",
+  n: 4,
   title: "Build the Steps of Your Personalized Sales Process",
   date: "July 7, 2026"
 }];
 function Schedule() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Section, { className: "bg-background", id: "schedule", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(Reveal, { className: "max-w-3xl", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold uppercase tracking-[0.2em] text-gold", children: "Course Schedule & Outline" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight", children: [
-        "Four working sessions.",
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold uppercase tracking-[0.22em] text-gold", children: "Course Schedule & Outline" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-5 font-display text-[clamp(26px,4vw,38px)] font-bold text-navy leading-[1.2] max-w-[560px]", children: [
+        "Every one of the four sessions is a working session.",
         " ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "italic text-warm-gray", children: "You build as you learn." })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "italic font-normal text-warm-gray", children: "You build as you learn." })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-6 text-lg text-warm-gray leading-relaxed", children: "Led by a professional sales trainer, you'll work through the Close With Confidence Playbook to construct your personalized selling system step by step — with real-time feedback from a room of fellow business owners." })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 text-[15px] text-warm-gray leading-[1.75] max-w-[600px]", children: "Led by a professional sales trainer, you'll work through the Close With Confidence Playbook to construct your personalized selling system step by step. Our trainer keeps the group engaged so you get expert guidance plus real-time feedback from a room of fellow business owners solving the same challenges." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mt-6 inline-block text-[10px] font-semibold uppercase tracking-[0.18em] text-gold border border-gold rounded-full px-4 py-1", children: "4 Working Sessions" })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(motion.div, { initial: "hidden", whileInView: "show", viewport: {
-      once: true,
-      margin: "-80px"
-    }, variants: stagger, className: "mt-14 grid gap-5", children: SESSIONS.map((s) => /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { variants: fadeUp, className: "group grid md:grid-cols-12 gap-6 items-center rounded-2xl border border-border bg-card p-6 md:p-8 hover:border-gold hover:shadow-xl transition-all", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "md:col-span-2 flex items-center gap-4", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-display text-5xl text-gold/40 group-hover:text-gold transition-colors", children: s.n }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-px flex-1 bg-border md:hidden" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "md:col-span-7", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs font-semibold uppercase tracking-widest text-warm-gray", children: [
-          "Session ",
-          s.n
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-1 text-xl md:text-2xl font-bold text-navy leading-snug", children: s.title })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "md:col-span-3 flex items-start gap-3 text-sm", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Calendar, { className: "h-5 w-5 text-gold mt-0.5 shrink-0" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold text-navy", children: s.date }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-warm-gray", children: "12 PM PDT / 3 PM EDT" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-warm-gray", children: "90 minutes" })
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-10 relative", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute left-7 top-0 bottom-0 w-px bg-border" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(motion.div, { initial: "hidden", whileInView: "show", viewport: {
+        once: true,
+        margin: "-80px"
+      }, variants: stagger, className: "grid", children: SESSIONS.map((s) => /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.div, { variants: fadeUp, className: "group grid grid-cols-[56px_1fr] gap-x-5 py-6 border-b border-border last:border-b-0", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col items-center pt-0.5 z-10", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-9 h-9 rounded-full border border-border bg-background flex items-center justify-center text-[13px] font-semibold text-warm-gray transition-all group-hover:bg-gold group-hover:border-gold group-hover:text-white", children: s.n }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "pt-1", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[10px] font-semibold uppercase tracking-[0.18em] text-warm-gray/60", children: [
+            "Session ",
+            s.n
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-1 font-display text-[clamp(16px,2.5vw,20px)] font-bold leading-snug text-navy transition-colors group-hover:text-gold", children: s.title }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-3 flex flex-wrap items-center gap-x-5 gap-y-1", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1.5 text-[12px] text-warm-gray", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Calendar, { className: "h-3.5 w-3.5 text-gold/80 shrink-0" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold text-navy", children: s.date })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1.5 text-[12px] text-warm-gray", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { className: "h-3.5 w-3.5 text-gold/80 shrink-0" }),
+              "12 PM PDT / 3 PM EDT"
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1.5 text-[12px] text-warm-gray", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Timer, { className: "h-3.5 w-3.5 text-gold/80 shrink-0" }),
+              "90 minutes"
+            ] })
+          ] })
         ] })
-      ] })
-    ] }, s.n)) })
+      ] }, s.n)) })
+    ] })
   ] });
 }
 function Instructor() {
@@ -287,9 +303,10 @@ function Instructor() {
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight", children: "Darrin Guttman" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-lg text-warm-gray italic", children: "Founder & CEO of The Scale Summit · Professional Sales Trainer" }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 space-y-4 text-lg text-foreground/80 leading-relaxed", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Darrin started selling in college and never stopped. Over 40 years in sales, the communication and closing strategies he developed didn't just build his own success — they've shaped the careers of thousands he's trained and mentored." }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Darrin started selling in college and never stopped. Over 40 years in sales, the communication and closing strategies he developed didn't just build his own success they've shaped the careers of thousands he's trained and mentored." }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "His teaching style is engaging, interactive, and deeply strategic. He doesn't lecture. He gets in the room with you." }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold text-navy", children: "This course is his baby. For most business owners, it's the missing piece that finally unlocks the ability to close with confidence." })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold text-navy", children: "This course is his baby. For most business owners, it's the missing piece that finally unlocks the ability to close with confidence." }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Ready to take the next step in business ownership success?" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-8 flex flex-wrap items-center gap-6", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(PrimaryCTA, {}),
@@ -306,24 +323,24 @@ const TESTIMONIALS = [{
 }, {
   name: "Brendon Reimer",
   role: "Riivers Advisory Group, Founder",
-  img: null,
+  img: Brendon,
   quote: "This wasn't just a sales program, it was a full business strategy accelerator. The process is rock solid, no fluff, and gave me the confidence and direction to scale faster than I thought possible."
 }, {
   name: "Gina Fedeli",
   role: "P3 Transformation, Founder & CEO",
   img: gina,
-  quote: "The program's structure and insights were immediately actionable — resulting in our largest client win to date, closed in just one week."
+  quote: "The program's structure and insights were immediately actionable  resulting in our largest client win to date, closed in just one week."
 }, {
   name: "Steve Soto",
   role: "Breezy Sites, Founder",
   img: steve,
-  quote: "This program has completely shifted how I approach sales — focusing on truly understanding the customer's issues so we work together collaboratively. And I closed several new sales already."
+  quote: "This program has completely shifted how I approach sales  focusing on truly understanding the customer's issues so we work together collaboratively. And I closed several new sales already."
 }];
 function Testimonials() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Section, { className: "bg-background", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(Reveal, { className: "max-w-3xl", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-semibold uppercase tracking-[0.2em] text-gold", children: "Real Results" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight", children: "What people are saying." })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight", children: "What People Are Saying About The Scale Summit Courses & Events." })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(motion.div, { initial: "hidden", whileInView: "show", viewport: {
       once: true,
@@ -347,13 +364,13 @@ function Testimonials() {
 }
 const FAQ = [{
   q: "Do I need any sales experience?",
-  a: "None at all. This course was built specifically for founders with no formal sales training."
+  a: "None at all. This course was built specifically for founders with no formal sales training, limited experience, or those who need a refresher."
 }, {
   q: "What if I already sell, but inconsistently?",
   a: "Perfect fit. You'll replace the guesswork with a repeatable system you can run every time."
 }, {
   q: "Will this work for my industry?",
-  a: "Yes. If you do a face-to-face sale, you're building your personalized sales process — tailored to what you sell and who you sell to."
+  a: "Yes. If you do a face-to-face sale, you're building your personalized sales process  tailored to what you sell and who you sell to."
 }, {
   q: "What do I walk away with?",
   a: "A complete, personalized selling system and the confidence to run your very next cold sales call."
@@ -377,8 +394,8 @@ function FinalCTA() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Section, { className: "bg-navy-deep text-warm-white text-center relative overflow-hidden", id: "register", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(0.78_0.13_78_/_0.15),transparent_60%)]" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(Reveal, { className: "relative max-w-3xl mx-auto", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-4xl md:text-6xl font-bold leading-tight", children: "Your expertise got you this far." }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 font-display italic text-2xl md:text-3xl text-gold", children: "Your ability to close is what takes you the rest of the way." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-4xl md:text-6xl font-bold leading-tight", children: "You're building something special." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 font-display italic text-2xl md:text-3xl text-gold", children: "This is where you learn to sell it like a pro." }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-10 flex flex-wrap justify-center items-center gap-6", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(PrimaryCTA, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: ADVISOR_URL, className: "inline-flex items-center gap-2 text-warm-white/85 hover:text-gold font-semibold transition-colors", children: [
@@ -391,7 +408,7 @@ function FinalCTA() {
 }
 function Footer() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("footer", { id: "contact", className: "bg-background border-t border-border text-muted-foreground", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10 flex flex-col sm:flex-row items-center justify-between gap-4", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: logo, alt: "The Scale Summit", className: "h-8 w-auto bg-white p-1" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: logo, alt: "The Scale Summit", className: "h-18 w-auto bg-white p-1" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm", children: [
       "© ",
       (/* @__PURE__ */ new Date()).getFullYear(),
