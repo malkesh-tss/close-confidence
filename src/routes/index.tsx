@@ -22,6 +22,7 @@ import gina from "@/assets/gina.webp";
 import kathy from "@/assets/kathy.jpg";
 import steve from "@/assets/steve.webp";
 import Brendon from "@/assets/Brendon.jpg";
+
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
@@ -154,22 +155,28 @@ const WHY_QUESTIONS = [
 
 function WhySection() {
   return (
-    <Section className="bg-background">
-      <div className="grid lg:grid-cols-12 gap-12">
-        <Reveal className="lg:col-span-5">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-            Why This Course Matters
-          </p>
-          <h2 className="mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight">
-            You're the expert in your field. But here's the hard truth: if you can't close, none of
-            that expertise pays the bills.
+    <Section className="bg-background py-14 px-8">
+      {/* eyebrow + fading rule */}
+      <div className="flex items-center gap-3 mb-10">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold shrink-0">
+          Why This Course Matters
+        </p>
+        <div className="flex-1 h-px bg-gold opacity-35" />
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-16 items-start">
+        {/* LEFT — copy */}
+        <Reveal>
+          <h2 className="font-['Lora',serif] text-4xl md:text-[2.4rem] font-bold leading-[1.2] text-navy">
+            You're the expert in your field. But here's the hard truth: if you can't close,{" "}
+            <em className="italic text-gold">none of that expertise pays the bills.</em>
           </h2>
-          <p className="mt-6 text-lg text-warm-gray leading-relaxed">
+          <p className="mt-5 text-sm leading-[1.8] text-warm-gray">
             For a lot of founders, that's a terrifying thought. It doesn't have to be. Close With
             Confidence gives you the clarity and the strategy to finally answer the questions that
             keep founders stuck.
           </p>
-          <p className="mt-6 text-lg font-semibold text-navy">
+          <p className="mt-3.5 text-sm font-semibold text-navy leading-[1.7]">
             Master these, and selling stops feeling like guesswork. It starts feeling like a system.
           </p>
           <div className="mt-8">
@@ -177,23 +184,33 @@ function WhySection() {
           </div>
         </Reveal>
 
+        {/* RIGHT — indexed list with left gutter */}
         <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
           variants={stagger}
-          className="lg:col-span-7 grid sm:grid-cols-2 gap-4"
         >
-          {WHY_QUESTIONS.map(({ icon: Icon, q }) => (
+          {WHY_QUESTIONS.map(({ icon: Icon, q }, i) => (
             <motion.div
               key={q}
               variants={fadeUp}
-              className="group rounded-2xl border border-border bg-card p-6 hover:border-gold hover:shadow-lg transition-all"
+              className="grid grid-cols-[48px_1fr] border-t border-navy/10 last:border-b"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-gold group-hover:bg-gold group-hover:text-navy transition-colors">
-                <Icon className="h-5 w-5" />
+              {/* gutter: number + icon */}
+              <div className="flex flex-col items-center gap-1.5 py-5 border-r border-navy/10">
+                <span className="font-['Lora',serif] text-[0.8rem] font-bold text-gold tracking-wide">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-navy">
+                  <Icon className="h-4 w-4 text-gold" />
+                </div>
               </div>
-              <p className="mt-5 text-lg font-semibold text-navy leading-snug">{q}</p>
+
+              {/* question text */}
+              <div className="flex items-center pl-4 py-5">
+                <p className="text-sm font-medium text-navy leading-snug">{q}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -234,32 +251,33 @@ function WhatYouLearn() {
           </div>
         </Reveal>
 
-        <motion.ul
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={stagger}
-          className="space-y-4"
-        >
-          <div>
-            {/* FIX 1: Added missing transition sentence */}
-            <h1 className="mt-6 text-lg text-warm-white/75 leading-relaxed">
-              You'll walk away with a personalized step-by-step sales process and the ability to:
-            </h1>
-          </div>
-          {LEARN_ITEMS.map((item) => (
-            <motion.li
-              key={item}
-              variants={fadeUp}
-              className="flex items-start gap-4 rounded-2xl border border-warm-white/10 bg-warm-white/5 backdrop-blur p-5"
-            >
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold text-navy-deep">
-                <Check className="h-5 w-5" strokeWidth={3} />
-              </div>
-              <span className="text-lg leading-snug pt-1">{item}</span>
-            </motion.li>
-          ))}
-        </motion.ul>
+        <div>
+          {/* Heading above the list */}
+          <p className="mb-6 text-lg text-warm-white/75 leading-relaxed">
+            You'll walk away with a personalized step-by-step sales process and the ability to:
+          </p>
+
+          <motion.ul
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={stagger}
+            className="space-y-4"
+          >
+            {LEARN_ITEMS.map((item) => (
+              <motion.li
+                key={item}
+                variants={fadeUp}
+                className="flex items-start gap-4 rounded-2xl border border-warm-white/10 bg-warm-white/5 backdrop-blur p-5"
+              >
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold text-navy-deep">
+                  <Check className="h-5 w-5" strokeWidth={3} />
+                </div>
+                <span className="text-lg leading-snug pt-1">{item}</span>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </div>
       </div>
 
       <Reveal className="mt-16 flex flex-wrap items-center justify-between gap-6 rounded-2xl border border-gold/30 bg-gradient-to-r from-gold/10 to-transparent p-8">
