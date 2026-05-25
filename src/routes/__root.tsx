@@ -7,8 +7,10 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 
 import appCss from "../styles.css?url";
+import { LoadingSpinner } from "@/components/loading";
 
 function NotFoundComponent() {
   return (
@@ -110,9 +112,20 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Hide loading spinner after page fully loads
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
+      {isLoading && <LoadingSpinner />}
       <Outlet />
     </QueryClientProvider>
   );
