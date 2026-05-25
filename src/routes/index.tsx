@@ -117,7 +117,7 @@ function Hero() {
 
           <motion.p
             variants={fadeUp}
-            className="mt-6 text-lg md:text-xl text-warm-white/75 max-w-2xl leading-relaxed"
+            className="mt-6 text-sm md:text-sm text-warm-white/75 max-w-2xl leading-relaxed"
           >
             Built for founders who never got formal sales training, and the ones who know they need
             a real strategy to win cold prospects.
@@ -234,32 +234,38 @@ const LEARN_ITEMS = [
 
 function WhatYouLearn() {
   return (
-    <Section className="bg-navy-deep text-warm-white overflow-hidden relative">
-      <div className="absolute top-1/2 -right-32 h-[400px] w-[400px] rounded-full bg-gold/10 blur-[100px] -translate-y-1/2" />
-      <div className="relative grid lg:grid-cols-2 gap-16 items-center">
+    <Section className="bg-navy-deep text-warm-white overflow-hidden relative" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      {/* Ambient glow effects */}
+      <div className="absolute top-1/2 -right-32 h-[420px] w-[420px] rounded-full bg-gold/10 blur-[120px] -translate-y-1/2 pointer-events-none" />
+      <div className="absolute -top-20 -left-20 h-[300px] w-[300px] rounded-full bg-gold/5 blur-[100px] pointer-events-none" />
+
+      <div className="relative grid lg:grid-cols-2 gap-[72px] items-start">
+        {/* Left Column */}
         <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+          <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold mb-[18px]">
             What You'll Learn
           </p>
-          <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
-            Closing cold leads is where most founders{" "}
-            <span className="italic text-gold">fall apart.</span>
+          <h2
+            className="text-[26px] font-bold leading-[1.3] text-warm-white mb-5"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            Closing your warm market (friends, referrals, people who already trust you) is easy. Closing cold leads is where most founders fall apart.
           </h2>
-          <p className="mt-6 text-lg text-warm-white/75 leading-relaxed">
+          <p className="text-sm font-light leading-[1.75] text-warm-white/65 mb-7">
             This 4-session course walks you through building a personalized selling system designed
             to close cold prospects. You'll finish ready to run your very next sales call with total
             confidence.
           </p>
-          <div className="mt-8 space-y-2 font-display text-2xl italic text-warm-white/90">
-            <p>No more guessing.</p>
-            <p>No more uncertainty.</p>
-            <p>No more wondering how to grow your business.</p>
+          <div className="border-l-2 border-gold/40 pl-4 mt-7 space-y-1.5">
+            <p className="font-display italic text-[15px] text-warm-white/85">No more guessing.</p>
+            <p className="font-display italic text-[15px] text-warm-white/85">No more uncertainty.</p>
+            <p className="font-display italic text-[15px] text-warm-white/85">No more wondering how to grow your business.</p>
           </div>
         </Reveal>
 
+        {/* Right Column */}
         <div>
-          {/* Heading above the list */}
-          <p className="mb-6 text-lg text-warm-white/75 leading-relaxed">
+          <p className="text-sm font-light leading-[1.7] text-warm-white/65 mb-5">
             You'll walk away with a personalized step-by-step sales process and the ability to:
           </p>
 
@@ -268,30 +274,38 @@ function WhatYouLearn() {
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             variants={stagger}
-            className="space-y-4"
+            className="space-y-2.5"
           >
             {LEARN_ITEMS.map((item) => (
               <motion.li
                 key={item}
                 variants={fadeUp}
-                className="flex items-start gap-4 rounded-2xl border border-warm-white/10 bg-warm-white/5 backdrop-blur p-5"
+                className="flex items-start gap-3.5 rounded-xl border border-gold/18 bg-warm-white/4 backdrop-blur p-4 transition-colors duration-300 hover:bg-gold/7 hover:border-gold/38"
               >
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold text-navy-deep">
-                  <Check className="h-5 w-5" strokeWidth={3} />
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold text-navy-deep mt-0.5">
+                  <Check className="h-3.5 w-3.5" strokeWidth={3} />
                 </div>
-                <span className="text-lg leading-snug pt-1">{item}</span>
+                <span className="text-[13.5px] leading-snug text-warm-white/90 pt-0.5">{item}</span>
               </motion.li>
             ))}
           </motion.ul>
         </div>
       </div>
 
-      <Reveal className="mt-16 flex flex-wrap items-center justify-between gap-6 rounded-2xl border border-gold/30 bg-gradient-to-r from-gold/10 to-transparent p-8">
+      {/* CTA Bar */}
+      <Reveal className="mt-14 flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-gold/35 p-7 relative overflow-hidden"
+        style={{ background: "linear-gradient(105deg, rgba(212,175,55,0.08) 0%, transparent 60%)" }}
+      >
         <div>
-          <h3 className="text-2xl font-bold">Ready to take the next step?</h3>
-          <p className="mt-1 text-warm-white/70">
-            Have questions? {/* FIX 2: Wrap AdvisorCTA to override link color to gold */}
-            <span className="[&_a]:text-gold [&_a]:underline [&_a]:decoration-gold/50 [&_a]:hover:decoration-gold">
+          <h3
+            className="text-[22px] font-bold text-warm-white mb-1"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            Ready to take the next step?
+          </h3>
+          <p className="text-[13px] font-light text-warm-white/60">
+            Have questions?{" "}
+            <span className="[&_a]:text-gold [&_a]:underline [&_a]:decoration-gold/45 [&_a]:hover:decoration-gold">
               <AdvisorCTA />
             </span>
           </p>
@@ -337,7 +351,7 @@ function Schedule() {
           Every one of the four sessions is a working session.{" "}
           <span className="italic font-normal text-warm-gray">You build as you learn.</span>
         </h2>
-        <p className="mt-4 text-[15px] text-warm-gray leading-[1.75] max-w-[600px]">
+        <p className="mt-4 text-sm text-warm-gray leading-[1.75] max-w-[600px]">
           Led by a professional sales trainer, you'll work through the Close With Confidence
           Playbook to construct your personalized selling system step by step. Our trainer keeps the
           group engaged so you get expert guidance plus real-time feedback from a room of fellow
@@ -406,52 +420,94 @@ function Schedule() {
 
 function Instructor() {
   return (
-    <Section className="bg-secondary/50">
-      <div className="grid lg:grid-cols-12 gap-12 items-center">
+    <Section className="bg-secondary/50 overflow-hidden relative">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gold/5 blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-navy/8 blur-[80px] translate-y-1/3 pointer-events-none" />
+
+      <div className="relative grid lg:grid-cols-12 gap-16 items-center">
+
+        {/* ── Image Column ── */}
         <Reveal className="lg:col-span-5">
-          <div className="relative">
-            <div className="absolute -inset-4 rounded-3xl bg-gold/20 blur-2xl" />
-            <div className="relative aspect-square overflow-hidden rounded-3xl border-4 border-warm-white shadow-2xl">
-              <img src={darrin} alt="Darrin Guttman" className="w-full h-full object-cover" />
+          <div className="relative max-w-[440px] mx-auto lg:mx-0">
+
+            {/* Offset background block */}
+            <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl bg-gold/15 pointer-events-none" />
+
+            {/* Main photo frame */}
+            <div className="relative aspect-square overflow-hidden rounded-3xl border border-warm-white/60 shadow-2xl">
+              <img
+                src={darrin}
+                alt="Darrin Guttman"
+                className="w-full h-full object-cover scale-[1.02] hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              {/* Bottom fade */}
+              <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-navy/70 to-transparent" />
+
+              {/* Name overlay inside photo */}
+              <div className="absolute bottom-5 left-5">
+                <p className="text-warm-white font-bold text-lg leading-tight">Darrin Guttman</p>
+                <p className="text-warm-white/65 text-xs mt-0.5 uppercase tracking-wide">Founder & CEO</p>
+              </div>
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-navy text-warm-white px-6 py-4 rounded-2xl shadow-xl">
-              <p className="text-3xl font-bold text-gold">40+</p>
-              <p className="text-xs uppercase tracking-wider">Years in Sales</p>
+
+            {/* Stat badge */}
+            <div className="absolute -top-4 -right-4 bg-navy text-warm-white px-5 py-3.5 rounded-2xl shadow-xl border border-gold/25 flex flex-col items-center">
+              <p className="text-3xl font-bold text-gold leading-none">40+</p>
+              <p className="text-[10px] uppercase tracking-widest mt-1 text-warm-white/65">Years in Sales</p>
             </div>
+
+            {/* Corner accent */}
+            <div className="absolute -bottom-3 -left-3 w-14 h-14 border-b-2 border-l-2 border-gold/40 rounded-bl-2xl pointer-events-none" />
           </div>
         </Reveal>
 
+        {/* ── Text Column ── */}
         <Reveal className="lg:col-span-7" delay={0.1}>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold">
             Your Instructor
           </p>
-          <h2 className="mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight">
+
+          <h2 className="mt-3 text-4xl md:text-5xl font-bold text-navy leading-tight">
             Darrin Guttman
           </h2>
-          <p className="mt-2 text-lg text-warm-gray italic">
-            Founder & CEO of The Scale Summit · Professional Sales Trainer
-          </p>
-          <div className="mt-6 space-y-4 text-lg text-foreground/80 leading-relaxed">
+
+          <div className="mt-3 flex items-center gap-3">
+            <div className="h-px w-8 bg-gold/50" />
+            <p className="text-base text-warm-gray italic">
+              Founder & CEO of The Scale Summit · Professional Sales Trainer
+            </p>
+          </div>
+
+          <div className="mt-7 space-y-4 text-sm text-foreground/80 leading-relaxed">
             <p>
               Darrin started selling in college and never stopped. Over 40 years in sales, the
-              communication and closing strategies he developed didn't just build his own success
+              communication and closing strategies he developed didn't just build his own success —
               they've shaped the careers of thousands he's trained and mentored.
             </p>
             <p>
               His teaching style is engaging, interactive, and deeply strategic. He doesn't lecture.
               He gets in the room with you.
             </p>
-            <p className="font-semibold text-navy">
-              This course is his baby. For most business owners, it's the missing piece that finally
-              unlocks the ability to close with confidence.
-            </p>
+
+            {/* Highlighted pull quote */}
+            <div className="border-l-[3px] border-gold pl-4 py-1 bg-gold/5 rounded-r-xl">
+              <p className="font-semibold text-navy text-sm">
+                This course is his baby. For most business owners, it's the missing piece that finally
+                unlocks the ability to close with confidence.
+              </p>
+            </div>
+
             <p>Ready to take the next step in business ownership success?</p>
           </div>
-          <div className="mt-8 flex flex-wrap items-center gap-6">
+
+          <div className="mt-8 flex flex-wrap items-center gap-5">
             <PrimaryCTA />
             <AdvisorCTA />
           </div>
         </Reveal>
+
       </div>
     </Section>
   );
@@ -490,10 +546,15 @@ const TESTIMONIALS = [
 
 function Testimonials() {
   return (
-    <Section className="bg-background">
-      <Reveal className="max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Real Results</p>
-        <h2 className="mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight">
+    <Section className="bg-background overflow-hidden relative">
+      {/* Background accent */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gold/5 blur-[100px] rounded-full pointer-events-none" />
+
+      <Reveal className="max-w-3xl relative">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold">
+          Real Results
+        </p>
+        <h2 className="mt-3 text-3xl md:text-4xl font-bold text-navy leading-tight">
           What People Are Saying About The Scale Summit Courses & Events.
         </h2>
       </Reveal>
@@ -503,36 +564,54 @@ function Testimonials() {
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
         variants={stagger}
-        className="mt-14 grid md:grid-cols-2 gap-6"
+        className="mt-14 grid md:grid-cols-2 gap-6 relative"
       >
         {TESTIMONIALS.map((t) => (
           <motion.figure
             key={t.name}
             variants={fadeUp}
-            className="relative rounded-2xl border border-border bg-card p-8 hover:shadow-xl transition-shadow"
+            className="group relative rounded-2xl border border-border bg-card p-8 hover:shadow-xl hover:border-gold/30 hover:-translate-y-0.5 transition-all duration-300"
           >
-            <Quote className="absolute top-6 right-6 h-10 w-10 text-gold/20" />
-            <blockquote className="text-lg leading-relaxed text-foreground/85">
+            {/* Gold top-border accent */}
+            <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-gold/40 to-transparent rounded-full" />
+
+            {/* Decorative quote mark */}
+            <div className="absolute top-5 right-6 text-[72px] leading-none font-serif text-gold/10 select-none pointer-events-none group-hover:text-gold/18 transition-colors duration-300">
+              "
+            </div>
+
+            <blockquote className="text-lg leading-relaxed text-foreground/85 pr-8">
               "{t.quote}"
             </blockquote>
-            <figcaption className="mt-6 flex items-center gap-4">
+
+            <div className="mt-6 h-px bg-gradient-to-r from-gold/20 to-transparent" />
+
+            <figcaption className="mt-5 flex items-center gap-4">
               {t.img ? (
-                <img
-                  src={t.img}
-                  alt={t.name}
-                  className="h-14 w-14 rounded-full object-cover border-2 border-gold"
-                />
+                <div className="relative shrink-0">
+                  <img
+                    src={t.img}
+                    alt={t.name}
+                    className="h-14 w-14 rounded-full object-cover border-2 border-gold"
+                  />
+                </div>
               ) : (
-                <div className="h-14 w-14 rounded-full bg-navy text-warm-white flex items-center justify-center font-display text-lg font-bold border-2 border-gold">
-                  {t.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
+                <div className="h-14 w-14 rounded-full bg-navy text-warm-white flex items-center justify-center font-display text-lg font-bold border-2 border-gold shrink-0">
+                  {t.name.split(" ").map((n) => n[0]).join("")}
                 </div>
               )}
               <div>
                 <p className="font-bold text-navy">{t.name}</p>
                 <p className="text-sm text-warm-gray">{t.role}</p>
+              </div>
+
+              {/* Star rating */}
+              <div className="ml-auto flex gap-0.5 shrink-0">
+                {Array.from({ length: 5 }).map((_, s) => (
+                  <svg key={s} className="w-3.5 h-3.5 text-gold fill-gold" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
               </div>
             </figcaption>
           </motion.figure>
@@ -566,7 +645,7 @@ function FaqSection() {
     <Section className="bg-secondary/50">
       <Reveal className="max-w-3xl">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">FAQ</p>
-        <h2 className="mt-4 text-4xl md:text-5xl font-bold text-navy leading-tight">
+        <h2 className="mt-4 text-2xl md:text-4xl font-bold text-navy leading-tight">
           Frequently asked questions.
         </h2>
       </Reveal>
