@@ -234,7 +234,10 @@ const LEARN_ITEMS = [
 
 function WhatYouLearn() {
   return (
-    <Section className="bg-navy-deep text-warm-white overflow-hidden relative" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+    <Section
+      className="bg-navy-deep text-warm-white overflow-hidden relative"
+      style={{ fontFamily: "'DM Sans', sans-serif" }}
+    >
       {/* Ambient glow effects */}
       <div className="absolute top-1/2 -right-32 h-[420px] w-[420px] rounded-full bg-gold/10 blur-[120px] -translate-y-1/2 pointer-events-none" />
       <div className="absolute -top-20 -left-20 h-[300px] w-[300px] rounded-full bg-gold/5 blur-[100px] pointer-events-none" />
@@ -249,7 +252,8 @@ function WhatYouLearn() {
             className="text-[26px] font-bold leading-[1.3] text-warm-white mb-5"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            Closing your warm market (friends, referrals, people who already trust you) is easy. Closing cold leads is where most founders fall apart.
+            Closing your warm market (friends, referrals, people who already trust you) is easy.
+            Closing cold leads is where most founders fall apart.
           </h2>
           <p className="text-sm font-light leading-[1.75] text-warm-white/65 mb-7">
             This 4-session course walks you through building a personalized selling system designed
@@ -258,8 +262,12 @@ function WhatYouLearn() {
           </p>
           <div className="border-l-2 border-gold/40 pl-4 mt-7 space-y-1.5">
             <p className="font-display italic text-[15px] text-warm-white/85">No more guessing.</p>
-            <p className="font-display italic text-[15px] text-warm-white/85">No more uncertainty.</p>
-            <p className="font-display italic text-[15px] text-warm-white/85">No more wondering how to grow your business.</p>
+            <p className="font-display italic text-[15px] text-warm-white/85">
+              No more uncertainty.
+            </p>
+            <p className="font-display italic text-[15px] text-warm-white/85">
+              No more wondering how to grow your business.
+            </p>
           </div>
         </Reveal>
 
@@ -293,7 +301,8 @@ function WhatYouLearn() {
       </div>
 
       {/* CTA Bar */}
-      <Reveal className="mt-14 flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-gold/35 p-7 relative overflow-hidden"
+      <Reveal
+        className="mt-14 flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-gold/35 p-7 relative overflow-hidden"
         style={{ background: "linear-gradient(105deg, rgba(212,175,55,0.08) 0%, transparent 60%)" }}
       >
         <div>
@@ -426,11 +435,9 @@ function Instructor() {
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-navy/8 blur-[80px] translate-y-1/3 pointer-events-none" />
 
       <div className="relative grid lg:grid-cols-12 gap-16 items-center">
-
         {/* ── Image Column ── */}
         <Reveal className="lg:col-span-5">
           <div className="relative max-w-[440px] mx-auto lg:mx-0">
-
             {/* Offset background block */}
             <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl bg-gold/15 pointer-events-none" />
 
@@ -447,14 +454,18 @@ function Instructor() {
               {/* Name overlay inside photo */}
               <div className="absolute bottom-5 left-5">
                 <p className="text-warm-white font-bold text-lg leading-tight">Darrin Guttman</p>
-                <p className="text-warm-white/65 text-xs mt-0.5 uppercase tracking-wide">Founder & CEO</p>
+                <p className="text-warm-white/65 text-xs mt-0.5 uppercase tracking-wide">
+                  Founder & CEO
+                </p>
               </div>
             </div>
 
             {/* Stat badge */}
             <div className="absolute -top-4 -right-4 bg-navy text-warm-white px-5 py-3.5 rounded-2xl shadow-xl border border-gold/25 flex flex-col items-center">
               <p className="text-3xl font-bold text-gold leading-none">40+</p>
-              <p className="text-[10px] uppercase tracking-widest mt-1 text-warm-white/65">Years in Sales</p>
+              <p className="text-[10px] uppercase tracking-widest mt-1 text-warm-white/65">
+                Years in Sales
+              </p>
             </div>
 
             {/* Corner accent */}
@@ -464,7 +475,6 @@ function Instructor() {
 
         {/* ── Text Column ── */}
         <Reveal className="lg:col-span-7" delay={0.1}>
-
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold">
             Your Instructor
           </p>
@@ -494,8 +504,8 @@ function Instructor() {
             {/* Highlighted pull quote */}
             <div className="border-l-[3px] border-gold pl-4 py-1 bg-gold/5 rounded-r-xl">
               <p className="font-semibold text-navy text-sm">
-                This course is his baby. For most business owners, it's the missing piece that finally
-                unlocks the ability to close with confidence.
+                This course is his baby. For most business owners, it's the missing piece that
+                finally unlocks the ability to close with confidence.
               </p>
             </div>
 
@@ -507,7 +517,6 @@ function Instructor() {
             <AdvisorCTA />
           </div>
         </Reveal>
-
       </div>
     </Section>
   );
@@ -597,7 +606,10 @@ function Testimonials() {
                 </div>
               ) : (
                 <div className="h-14 w-14 rounded-full bg-navy text-warm-white flex items-center justify-center font-display text-lg font-bold border-2 border-gold shrink-0">
-                  {t.name.split(" ").map((n) => n[0]).join("")}
+                  {t.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
                 </div>
               )}
               <div>
