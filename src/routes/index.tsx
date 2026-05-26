@@ -46,7 +46,7 @@ export const Route = createFileRoute("/")({
 const REGISTER_URL = "https://buy.stripe.com/aFacN68GJgdUckt4iv2880i";
 const ADVISOR_URL = "https://meet-with-ed.thescalesummit.com/";
 
-function PrimaryCTA({ label = "Register Now" }: { label?: string }) {
+function PrimaryCTA({ label = "Secure Your Seat Now" }: { label?: string }) {
   return (
     <Button asChild variant="gold" size="xl" className="group">
       <a href={REGISTER_URL}>
@@ -77,7 +77,7 @@ function Nav() {
         <div className="hidden sm:block">
           <Button asChild variant="gold" size="lg" className="group">
             <a href={REGISTER_URL}>
-              Register
+              Secure Your Seat Now
               <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </Button>
@@ -153,7 +153,13 @@ const WHY_QUESTIONS = [
   { icon: MessageCircle, q: "Why do I get ghosted when I swore the deal was done?" },
 ];
 
-function WhySection() {
+function WhySection({
+  isLoadingPrimaryCTA = false,
+  onPrimaryCTAClick,
+}: {
+  isLoadingPrimaryCTA?: boolean;
+  onPrimaryCTAClick?: () => void;
+} = {}) {
   return (
     <Section className="bg-background py-14 px-8">
       {/* eyebrow + fading rule */}
@@ -179,7 +185,7 @@ function WhySection() {
             Master these, and selling stops feeling like guesswork. It starts feeling like a system.
           </p>
           <div className="mt-8">
-            <PrimaryCTA />
+            <PrimaryCTA isLoading={isLoadingPrimaryCTA} onClick={onPrimaryCTAClick} />
           </div>
         </Reveal>
 
@@ -232,95 +238,124 @@ const LEARN_ITEMS = [
   "Present your proposal and close without the awkwardness",
 ];
 
-function WhatYouLearn() {
+function WhatYouLearn({
+  isLoadingPrimaryCTA = false,
+  onPrimaryCTAClick,
+  isLoadingAdvisorCTA = false,
+  onAdvisorCTAClick,
+}: {
+  isLoadingPrimaryCTA?: boolean;
+  onPrimaryCTAClick?: () => void;
+  isLoadingAdvisorCTA?: boolean;
+  onAdvisorCTAClick?: () => void;
+} = {}) {
   return (
     <Section
-      className="bg-navy-deep text-warm-white overflow-hidden relative"
-      style={{ fontFamily: "'DM Sans', sans-serif" }}
+      className="bg-navy-deep text-warm-white relative"
+      style={{ fontFamily: "'DM Sans', sans-serif", overflowX: "hidden" }}
     >
-      {/* Ambient glow effects */}
-      <div className="absolute top-1/2 -right-32 h-[420px] w-[420px] rounded-full bg-gold/10 blur-[120px] -translate-y-1/2 pointer-events-none" />
-      <div className="absolute -top-20 -left-20 h-[300px] w-[300px] rounded-full bg-gold/5 blur-[100px] pointer-events-none" />
+      {/* Wrapper keeps all content within viewport */}
+      <div className="relative w-full max-w-full overflow-hidden px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        {/* Ambient glow — clamped so they don't overflow horizontally */}
+        <div
+          className="absolute top-1/2 right-0 h-[300px] w-[300px] rounded-full bg-gold/10 blur-[120px] -translate-y-1/2 pointer-events-none"
+          style={{ transform: "translateY(-50%) translateX(40%)" }}
+        />
+        <div className="absolute -top-20 left-0 h-[250px] w-[250px] rounded-full bg-gold/5 blur-[100px] pointer-events-none -translate-x-1/2" />
 
-      <div className="relative grid lg:grid-cols-2 gap-[72px] items-start">
-        {/* Left Column */}
-        <Reveal>
-          <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold mb-[18px]">
-            What You'll Learn
-          </p>
-          <h2
-            className="text-[26px] font-bold leading-[1.3] text-warm-white mb-5"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            Closing your warm market (friends, referrals, people who already trust you) is easy.
-            Closing cold leads is where most founders fall apart.
-          </h2>
-          <p className="text-sm font-light leading-[1.75] text-warm-white/65 mb-7">
-            This 4-session course walks you through building a personalized selling system designed
-            to close cold prospects. You'll finish ready to run your very next sales call with total
-            confidence.
-          </p>
-          <div className="border-l-2 border-gold/40 pl-4 mt-7 space-y-1.5">
-            <p className="font-display italic text-[15px] text-warm-white/85">No more guessing.</p>
-            <p className="font-display italic text-[15px] text-warm-white/85">
-              No more uncertainty.
+        {/* Two-column grid — single column on mobile */}
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-[72px] items-start">
+          {/* Left Column */}
+          <Reveal>
+            <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold mb-[18px]">
+              What You'll Learn
             </p>
-            <p className="font-display italic text-[15px] text-warm-white/85">
-              No more wondering how to grow your business.
+            <h2
+              className="text-[20px] sm:text-[24px] lg:text-[26px] font-bold leading-[1.3] text-warm-white mb-5"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              Closing your warm market (friends, referrals, people who already trust you) is easy.
+              Closing cold leads is where most founders fall apart.
+            </h2>
+            <p className="text-sm font-light leading-[1.75] text-warm-white/65 mb-7">
+              This 4-session course walks you through building a personalized selling system
+              designed to close cold prospects. You'll finish ready to run your very next sales call
+              with total confidence.
             </p>
+            <div className="border-l-2 border-gold/40 pl-4 mt-7 space-y-1.5">
+              <p className="font-display italic text-[15px] text-warm-white/85">
+                No more guessing.
+              </p>
+              <p className="font-display italic text-[15px] text-warm-white/85">
+                No more uncertainty.
+              </p>
+              <p className="font-display italic text-[15px] text-warm-white/85">
+                No more wondering how to grow your business.
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Right Column */}
+          <div>
+            <p className="text-sm font-light leading-[1.7] text-warm-white/65 mb-5">
+              You'll walk away with a personalized step-by-step sales process and the ability to:
+            </p>
+
+            <motion.ul
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={stagger}
+              className="space-y-2.5"
+            >
+              {LEARN_ITEMS.map((item) => (
+                <motion.li
+                  key={item}
+                  variants={fadeUp}
+                  className="flex items-start gap-3.5 rounded-xl border border-gold/18 bg-warm-white/4 backdrop-blur p-4 transition-colors duration-300 hover:bg-gold/7 hover:border-gold/38"
+                >
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold text-navy-deep mt-0.5">
+                    <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                  </div>
+                  <span className="text-[13.5px] leading-snug text-warm-white/90 pt-0.5">
+                    {item}
+                  </span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
+        </div>
+
+        {/* CTA Bar — stacks on mobile, row on sm+ */}
+        <Reveal
+          className="mt-10 sm:mt-14 rounded-2xl border border-gold/35 p-5 sm:p-7 relative overflow-hidden"
+          style={{
+            background: "linear-gradient(105deg, rgba(212,175,55,0.08) 0%, transparent 60%)",
+          }}
+        >
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
+            <div className="min-w-0">
+              <h3
+                className="text-[20px] sm:text-[22px] font-bold text-warm-white mb-1"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Ready to take the next step?
+              </h3>
+              <p className="text-[13px] font-light text-warm-white/60">
+                Have questions?{" "}
+                <span className="[&_a]:text-gold [&_a]:underline [&_a]:decoration-gold/45 [&_a]:hover:decoration-gold">
+                  <AdvisorCTA />
+                </span>
+              </p>
+            </div>
+
+            {/* Full-width on mobile, auto on sm+ */}
+            <div className="w-full sm:w-auto shrink-0">
+              <PrimaryCTA className="w-full sm:w-auto justify-center" />
+            </div>
           </div>
         </Reveal>
-
-        {/* Right Column */}
-        <div>
-          <p className="text-sm font-light leading-[1.7] text-warm-white/65 mb-5">
-            You'll walk away with a personalized step-by-step sales process and the ability to:
-          </p>
-
-          <motion.ul
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={stagger}
-            className="space-y-2.5"
-          >
-            {LEARN_ITEMS.map((item) => (
-              <motion.li
-                key={item}
-                variants={fadeUp}
-                className="flex items-start gap-3.5 rounded-xl border border-gold/18 bg-warm-white/4 backdrop-blur p-4 transition-colors duration-300 hover:bg-gold/7 hover:border-gold/38"
-              >
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold text-navy-deep mt-0.5">
-                  <Check className="h-3.5 w-3.5" strokeWidth={3} />
-                </div>
-                <span className="text-[13.5px] leading-snug text-warm-white/90 pt-0.5">{item}</span>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </div>
       </div>
-
-      {/* CTA Bar */}
-      <Reveal
-        className="mt-14 flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-gold/35 p-7 relative overflow-hidden"
-        style={{ background: "linear-gradient(105deg, rgba(212,175,55,0.08) 0%, transparent 60%)" }}
-      >
-        <div>
-          <h3
-            className="text-[22px] font-bold text-warm-white mb-1"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            Ready to take the next step?
-          </h3>
-          <p className="text-[13px] font-light text-warm-white/60">
-            Have questions?{" "}
-            <span className="[&_a]:text-gold [&_a]:underline [&_a]:decoration-gold/45 [&_a]:hover:decoration-gold">
-              <AdvisorCTA />
-            </span>
-          </p>
-        </div>
-        <PrimaryCTA />
-      </Reveal>
     </Section>
   );
 }
@@ -356,7 +391,7 @@ function Schedule() {
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
           Course Schedule & Outline
         </p>
-        <h2 className="mt-5 font-display text-[clamp(26px,4vw,38px)] font-bold text-navy leading-[1.2] max-w-[560px]">
+        <h2 className="mt-5 font-display text-[clamp(22px,4vw,38px)] font-bold text-navy leading-[1.2] max-w-[560px]">
           Every one of the four sessions is a working session.{" "}
           <span className="italic font-normal text-warm-gray">You build as you learn.</span>
         </h2>
@@ -371,57 +406,65 @@ function Schedule() {
         </span>
       </Reveal>
 
-      {/* Timeline list */}
-      <div className="mt-10 relative">
-        {/* Vertical rule */}
-        <div className="absolute left-7 top-0 bottom-0 w-px bg-border" />
+      <div className="mt-10">
+        {/* Sessions wrapper — vertical rule is scoped ONLY to this div */}
+        <div className="relative">
+          <div className="absolute left-[19px] sm:left-7 top-0 bottom-0 w-px bg-border" />
 
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={stagger}
-          className="grid"
-        >
-          {SESSIONS.map((s) => (
-            <motion.div
-              key={s.n}
-              variants={fadeUp}
-              className="group grid grid-cols-[56px_1fr] gap-x-5 py-6 border-b border-border last:border-b-0"
-            >
-              {/* Number circle */}
-              <div className="flex flex-col items-center pt-0.5 z-10">
-                <div className="w-9 h-9 rounded-full border border-border bg-background flex items-center justify-center text-[13px] font-semibold text-warm-gray transition-all group-hover:bg-gold group-hover:border-gold group-hover:text-white">
-                  {s.n}
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={stagger}
+            className="grid"
+          >
+            {SESSIONS.map((s) => (
+              <motion.div
+                key={s.n}
+                variants={fadeUp}
+                className="group grid grid-cols-[44px_1fr] sm:grid-cols-[56px_1fr] gap-x-3 sm:gap-x-5 py-4 sm:py-6 border-b border-border last:border-b-0"
+              >
+                {/* Number circle */}
+                <div className="flex flex-col items-center pt-0.5 z-10">
+                  <div className="w-[30px] h-[30px] sm:w-9 sm:h-9 rounded-full border border-border bg-background flex items-center justify-center text-[12px] sm:text-[13px] font-semibold text-warm-gray transition-all group-hover:bg-gold group-hover:border-gold group-hover:text-white">
+                    {s.n}
+                  </div>
                 </div>
-              </div>
 
-              {/* Content */}
-              <div className="pt-1">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-warm-gray/60">
-                  Session {s.n}
-                </p>
-                <h3 className="mt-1 font-display text-[clamp(16px,2.5vw,20px)] font-bold leading-snug text-navy transition-colors group-hover:text-gold">
-                  {s.title}
-                </h3>
-                <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1">
-                  <span className="flex items-center gap-1.5 text-[12px] text-warm-gray">
-                    <Calendar className="h-3.5 w-3.5 text-gold/80 shrink-0" />
-                    <span className="font-semibold text-navy">{s.date}</span>
-                  </span>
-                  <span className="flex items-center gap-1.5 text-[12px] text-warm-gray">
-                    <Clock className="h-3.5 w-3.5 text-gold/80 shrink-0" />
-                    12 PM PDT / 3 PM EDT
-                  </span>
-                  <span className="flex items-center gap-1.5 text-[12px] text-warm-gray">
-                    <Timer className="h-3.5 w-3.5 text-gold/80 shrink-0" />
-                    90 minutes
-                  </span>
+                {/* Content */}
+                <div className="pt-1">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-warm-gray/60">
+                    Session {s.n}
+                  </p>
+                  <h3 className="mt-1 font-display text-[clamp(15px,2.5vw,20px)] font-bold leading-snug text-navy transition-colors group-hover:text-gold">
+                    {s.title}
+                  </h3>
+                  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <span className="flex items-center gap-1.5 text-[12px] text-warm-gray whitespace-nowrap">
+                      <Calendar className="h-3.5 w-3.5 text-gold/80 shrink-0" />
+                      <span className="font-semibold text-navy">{s.date}</span>
+                    </span>
+                    <span className="flex items-center gap-1.5 text-[12px] text-warm-gray whitespace-nowrap">
+                      <Clock className="h-3.5 w-3.5 text-gold/80 shrink-0" />
+                      12 PM PDT / 3 PM EDT
+                    </span>
+                    <span className="flex items-center gap-1.5 text-[12px] text-warm-gray whitespace-nowrap">
+                      <Timer className="h-3.5 w-3.5 text-gold/80 shrink-0" />
+                      90 minutes
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+        {/* ↑ Rule ends here — CTA is OUTSIDE this wrapper so no overlap */}
+
+        {/* CTA Row */}
+        <div className="mt-10 flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6">
+          <PrimaryCTA className="w-full sm:w-auto" />
+          <AdvisorCTA className="w-full sm:w-auto" />
+        </div>
       </div>
     </Section>
   );
@@ -493,7 +536,7 @@ function Instructor() {
           <div className="mt-7 space-y-4 text-sm text-foreground/80 leading-relaxed">
             <p>
               Darrin started selling in college and never stopped. Over 40 years in sales, the
-              communication and closing strategies he developed didn't just build his own success —
+              communication and closing strategies he developed didn't just build his own success
               they've shaped the careers of thousands he's trained and mentored.
             </p>
             <p>
