@@ -364,22 +364,22 @@ const SESSIONS = [
   {
     n: 1,
     title: "Build Your Personal Discovery Call",
-    date: "June 16, 2026",
+    date: "June 23, 2026",
   },
   {
     n: 2,
     title: "How to Proactively Overcome Objections",
-    date: "June 23, 2026",
+    date: "June 30, 2026",
   },
   {
     n: 3,
     title: "The Art of: Storytelling, Presenting Your Proposal, and Closing the Sale",
-    date: "June 30, 2026",
+    date: "July 7, 2026",
   },
   {
     n: 4,
     title: "Build the Steps of Your Personalized Sales Process",
-    date: "July 7, 2026",
+    date: "July 14, 2026",
   },
 ];
 
@@ -460,10 +460,51 @@ function Schedule() {
         </div>
         {/* ↑ Rule ends here — CTA is OUTSIDE this wrapper so no overlap */}
 
-        {/* CTA Row */}
-        <div className="mt-10 flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6">
-          <PrimaryCTA className="w-full sm:w-auto" />
-          <AdvisorCTA className="w-full sm:w-auto" />
+        {/* Pricing + CTA */}
+        <div className="mt-14 relative flex flex-col items-center gap-0">
+          {/* Ambient glow */}
+          <div className="absolute inset-0 flex items-start justify-center pointer-events-none">
+            <div className="w-64 h-32 bg-gold/10 blur-3xl rounded-full translate-y-4" />
+          </div>
+
+          {/* Unified card wrapping price + CTAs together */}
+          <div className="relative w-full max-w-3xl">
+            <div className="flex flex-col items-center gap-5 rounded-3xl border border-gold/20 bg-gradient-to-br from-gold/8 via-gold/4 to-transparent px-8 py-8 text-center backdrop-blur-sm">
+              {/* Decorative top rule */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+
+              {/* Price row */}
+              <div className="flex items-center justify-center gap-3">
+                <span className="text-[11px] uppercase tracking-[0.22em] text-warm-gray/50 font-normal">
+                  Only
+                </span>
+                <span className="font-display text-[clamp(36px,6vw,52px)] text-gold leading-none tracking-tight font-black">
+                  $397
+                </span>
+                <div className="flex flex-col items-start gap-0.5 pl-3 border-l border-gold/20">
+                  <span className="text-[14px] text-warm-gray font-normal">for all 4 Sessions</span>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
+              {/* CTA Row — inside the card, full width */}
+              <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+                <PrimaryCTA className="w-full sm:w-auto" />
+                <AdvisorCTA className="w-full sm:w-auto" />
+              </div>
+
+              {/* Decorative bottom rule */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+            </div>
+          </div>
+
+          {/* CTA Row
+          <div className="w-full flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6">
+            <PrimaryCTA className="w-full sm:w-auto" />
+            <AdvisorCTA className="w-full sm:w-auto" />
+          </div> */}
         </div>
       </div>
     </Section>
